@@ -9,6 +9,7 @@ public class UserRegisterDataMapper {
         return UserModel.builder()
                 .dniUser(userEntity.getDniUser())
                 .dvUser(userEntity.getDvUser())
+                .passUser(userEntity.getPassUser())
                 .nameUser(userEntity.getNameUser())
                 .lastNameUser(userEntity.getLastNameUser())
                 .lastName2User(userEntity.getLastName2User())

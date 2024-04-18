@@ -15,9 +15,11 @@ public class UserModel {
     private BigInteger idUser;
 
     @Column(name = "dniUser")
-    private String dniUser;
+    private Integer dniUser;
     @Column(name = "dvUser")
     private String dvUser;
+    @Column(name = "passUser")
+    private String passUser;
     @Column(name= "nameUser")
     private String nameUser;
     @Column(name= "lastNameUser")
@@ -32,8 +34,11 @@ public class UserModel {
     private String profileImgUser;
     @Column(name = "creationDate")
     private Date creationDate;
+    // revisar
+    @OneToMany
     @Column(name = "idCompany")
-    private BigInteger idCompany;
+    private CompanyModel idCompany;
+
     @Column(name = "region")
     private int region;
     @Column(name = "province")
@@ -49,12 +54,20 @@ public class UserModel {
         this.idUser = idUser;
     }
 
-    public String getDniUser() {
+    public Integer getDniUser() {
         return dniUser;
     }
 
-    public void setDniUser(String dniUser) {
+    public void setDniUser(Integer dniUser) {
         this.dniUser = dniUser;
+    }
+
+    public String getPassUser() {
+        return passUser;
+    }
+
+    public void setPassUser(String passUser) {
+        this.passUser = passUser;
     }
 
     public String getDvUser() {
@@ -121,11 +134,11 @@ public class UserModel {
         this.profileImgUser = profileImgUser;
     }
 
-    public BigInteger getIdCompany() {
+    public CompanyModel getIdCompany() {
         return idCompany;
     }
 
-    public void setIdCompany(BigInteger idCompany) {
+    public void setIdCompany(CompanyModel idCompany) {
         this.idCompany = idCompany;
     }
 
@@ -160,6 +173,7 @@ public class UserModel {
     public UserModel(Builder builder) {
         this.dniUser = builder.dniUser;
         this.dvUser = builder.dvUser;
+        this.passUser = builder.passUser;
         this.nameUser = builder.nameUser;
         this.lastNameUser = builder.lastNameUser;
         this.lastName2User = builder.lastName2User;
@@ -173,8 +187,9 @@ public class UserModel {
         this.commune = builder.commune;
     }
     public static class Builder {
-        private String dniUser;
+        private Integer dniUser;
         private String dvUser;
+        private String passUser;
         private String nameUser;
         private String lastNameUser;
         private String lastName2User;
@@ -182,17 +197,21 @@ public class UserModel {
         private Date dateBirthUser;
         private String profileImgUser;
         private Date creationDate;
-        private BigInteger idCompany;
+        private CompanyModel idCompany;
         private int region;
         private  int province;
         private int commune;
 
-        public Builder dniUser(String dniUser){
+        public Builder dniUser(Integer dniUser){
             this.dniUser = dniUser;
             return this;
         }
         public Builder dvUser(String dvUser){
             this.dvUser = dvUser;
+            return this;
+        }
+        public Builder passUser(String passUser){
+            this.passUser = passUser;
             return this;
         }
         public Builder nameUser(String nameUser){
@@ -223,7 +242,7 @@ public class UserModel {
             this.creationDate = creationDate;
             return this;
         }
-        public Builder idCompany(BigInteger idCompany){
+        public Builder idCompany(CompanyModel idCompany){
             this.idCompany = idCompany;
             return this;
         }

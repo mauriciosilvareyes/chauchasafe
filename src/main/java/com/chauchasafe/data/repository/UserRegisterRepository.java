@@ -5,5 +5,5 @@ import com.chauchasafe.domain.entities.UserEntity;
 
 public interface UserRegisterRepository {
 
-    int saveUser(UserEntity userEntity);
+    int saveUser(UserModel userModel);
 }

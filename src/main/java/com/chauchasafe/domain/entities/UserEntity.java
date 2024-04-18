@@ -1,5 +1,6 @@
 package com.chauchasafe.domain.entities;
 
+import com.chauchasafe.data.model.CompanyModel;
 import com.chauchasafe.data.model.UserModel;
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
@@ -11,8 +12,9 @@ import java.util.Date;
 
 public class UserEntity {
 
-    private String dniUser;
+    private Integer dniUser;
     private String dvUser;
+    private String passUser;
     private String nameUser;
     private String lastNameUser;
     private String lastName2User;
@@ -20,7 +22,7 @@ public class UserEntity {
     private Date dateBirthUser;
     private String profileImgUser;
     private Date creationDate;
-    private BigInteger idCompany;
+    private CompanyModel idCompany;
     private int region;
     private  int province;
     private int commune;
@@ -33,11 +35,11 @@ public class UserEntity {
         this.dvUser = dvUser;
     }
 
-    public String getDniUser() {
+    public Integer getDniUser() {
         return dniUser;
     }
 
-    public void setDniUser(String dniUser) {
+    public void setDniUser(Integer dniUser) {
         this.dniUser = dniUser;
     }
 
@@ -97,11 +99,11 @@ public class UserEntity {
         this.creationDate = creationDate;
     }
 
-    public BigInteger getIdCompany() {
+    public CompanyModel getIdCompany() {
         return idCompany;
     }
 
-    public void setIdCompany(BigInteger idCompany) {
+    public void setIdCompany(CompanyModel idCompany) {
         this.idCompany = idCompany;
     }
 
@@ -129,6 +131,14 @@ public class UserEntity {
         this.commune = commune;
     }
 
+    public String getPassUser() {
+        return passUser;
+    }
+
+    public void setPassUser(String passUser) {
+        this.passUser = passUser;
+    }
+
     public UserEntity() {
         //empty for logic
     }
@@ -136,6 +146,7 @@ public class UserEntity {
     public UserEntity(Builder builder) {
         this.dniUser = builder.dniUser;
         this.dvUser = builder.dvUser;
+        this.passUser = builder.passUser;
         this.nameUser = builder.nameUser;
         this.lastNameUser = builder.lastNameUser;
         this.lastName2User = builder.lastName2User;
@@ -149,8 +160,9 @@ public class UserEntity {
         this.commune = builder.commune;
     }
     public static class Builder{
-        private String dniUser;
+        private Integer dniUser;
         private String dvUser;
+        private String passUser;
         private String nameUser;
         private String lastNameUser;
         private String lastName2User;
@@ -158,17 +170,21 @@ public class UserEntity {
         private Date dateBirthUser;
         private String profileImgUser;
         private Date creationDate;
-        private BigInteger idCompany;
+        private CompanyModel idCompany;
         private int region;
         private  int province;
         private int commune;
 
-        public Builder dniUser(String dniUser){
+        public Builder dniUser(Integer dniUser){
             this.dniUser = dniUser;
             return this;
         }
         public Builder dvUser(String dvUser){
             this.dvUser = dvUser;
+            return this;
+        }
+        public Builder passUser(String passUser){
+            this.passUser = passUser;
             return this;
         }
         public Builder nameUser(String nameUser){
@@ -199,7 +215,7 @@ public class UserEntity {
             this.creationDate = creationDate;
             return this;
         }
-        public Builder companyId(BigInteger idCompany){
+        public Builder companyId(CompanyModel idCompany){
             this.idCompany = idCompany;
             return this;
         }
